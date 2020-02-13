@@ -25,6 +25,7 @@ import com.sun.istack.internal.NotNull;
 
 import dk.dtu.compute.se.pisd.initial.model.*;
 
+import javax.swing.text.Position;
 import java.util.List;
 
 /**
@@ -69,6 +70,8 @@ public class GameController {
             }
 
 
+
+
             Space newPosition = board.getSpace(x, y);
             if (newPosition != null &&
                     newPosition.getPlayer() == null &&
@@ -79,15 +82,44 @@ public class GameController {
     }
 
     public void fastForward(Player player) {
+
+            if (player != null && player.board == board) {
+            Space newPosition = player.getSpace();
+
+            int x = newPosition.x;
+            int y = newPosition.y;
+
+            Heading heading1 = player.getHeading();
+            switch (heading1) {
+                case EAST:
+                    x = (x + 2) % player.board.width;
+                    break;
+                case WEST:
+                    x = (x + player.board.width - 2) % player.board.width;
+                    break;
+                case NORTH:
+                    y = (y + player.board.height - 2) % player.board.height;
+                    break;
+                case SOUTH:
+                    y = (y + 2) % player.board.height;
+                    break;
+                default:
+            }
+        }
+
         // TODO implement move of player two steps forward !
     }
 
     public void turnRight(Player player) {
-        // TODO implement player turn right (change of heading)
+        player.setHeading(player.getHeading().next());
+
+
+
     }
 
     public void turnLeft(Player player) {
-        // TODO implement player turn left (change of heading)
+        player.setHeading(player.getHeading().prev());
+
     }
 
     public boolean moveCards(@NotNull CommandCardField source, @NotNull CommandCardField target) {
