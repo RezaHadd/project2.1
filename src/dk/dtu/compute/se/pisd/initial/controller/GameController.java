@@ -90,9 +90,6 @@ public class GameController {
             }
 
 
-        // TODO implement move of player two steps forward !
-
-
     public void turnRight(Player player) {
         player.setHeading(player.getHeading().next());
 
