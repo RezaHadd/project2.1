@@ -42,8 +42,8 @@ import javafx.scene.shape.Polygon;
  */
 public class SpaceView extends Button implements ViewObserver {
 
-    final public static int SPACE_HEIGHT = 70;
-    final public static int SPACE_WIDTH = 70;
+    final public static int SPACE_HEIGHT = 50;
+    final public static int SPACE_WIDTH = 150;
 
     public final Space space;
 

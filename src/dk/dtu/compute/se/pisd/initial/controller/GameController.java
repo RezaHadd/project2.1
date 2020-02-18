@@ -21,6 +21,7 @@
  */
 package dk.dtu.compute.se.pisd.initial.controller;
 
+import com.sun.codemodel.internal.JCommentPart;
 import com.sun.istack.internal.NotNull;
 
 import dk.dtu.compute.se.pisd.initial.model.*;
@@ -50,7 +51,9 @@ public class GameController {
             int y = currentPosition.y;
 
             // TODO compute x and y of the new position when
-            //     the player moves forward!
+            //            //     the player moves forward!
+
+
 
             Heading heading = player.getHeading();
             switch (heading) {
@@ -82,33 +85,13 @@ public class GameController {
     }
 
     public void fastForward(Player player) {
-
-            if (player != null && player.board == board) {
-            Space newPosition = player.getSpace();
-
-            int x = newPosition.x;
-            int y = newPosition.y;
-
-            Heading heading1 = player.getHeading();
-            switch (heading1) {
-                case EAST:
-                    x = (x + 2) % player.board.width;
-                    break;
-                case WEST:
-                    x = (x + player.board.width - 2) % player.board.width;
-                    break;
-                case NORTH:
-                    y = (y + player.board.height - 2) % player.board.height;
-                    break;
-                case SOUTH:
-                    y = (y + 2) % player.board.height;
-                    break;
-                default:
+        for(int i = 0; i<2; i++)
+            moveForward(player);
             }
-        }
+
 
         // TODO implement move of player two steps forward !
-    }
+
 
     public void turnRight(Player player) {
         player.setHeading(player.getHeading().next());
