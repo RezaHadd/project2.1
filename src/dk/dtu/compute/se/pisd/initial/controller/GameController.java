@@ -82,33 +82,13 @@ public class GameController {
     }
 
     public void fastForward(Player player) {
+        for (int i = 0; i < 2; i++) {
+            moveForward(player);
 
-            if (player != null && player.board == board) {
-            Space newPosition = player.getSpace();
-
-            int x = newPosition.x;
-            int y = newPosition.y;
-
-            Heading heading1 = player.getHeading();
-            switch (heading1) {
-                case EAST:
-                    x = (x + 2) % player.board.width;
-                    break;
-                case WEST:
-                    x = (x + player.board.width - 2) % player.board.width;
-                    break;
-                case NORTH:
-                    y = (y + player.board.height - 2) % player.board.height;
-                    break;
-                case SOUTH:
-                    y = (y + 2) % player.board.height;
-                    break;
-                default:
-            }
         }
-
-        // TODO implement move of player two steps forward !
     }
+
+       // TODO implement move of player two steps forward !
 
     public void turnRight(Player player) {
         player.setHeading(player.getHeading().next());
